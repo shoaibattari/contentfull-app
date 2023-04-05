@@ -20,9 +20,16 @@ export default async function Page() {
       </h1>
 
       <div>
-        {blog.items.map((item: any) => (
-          <div key={item.id}> {item.fields.title} </div>
-        ))}
+        <ul className="grid grid-cols-4 mt-3 px-16 ">
+          {blog.items.map((item: any) => (
+            <li
+              key={item.sys.id}
+              className=" text-5xl font-serif text-center text-orange-700 mt-3 bg-gray-300 rounded-2xl p-5 w-[250px] uppercase"
+            >
+              {item.fields.title}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

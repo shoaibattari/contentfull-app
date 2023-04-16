@@ -20,7 +20,7 @@ export default async function Page() {
       </h1>
 
       <div>
-        <ul className="grid grid-cols-4 mt-3 px-16 ">
+        <ul className="md:grid  grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3  px-5 md:px-16 ">
           {blog.items.map((item: any) => (
             <li
               key={item.sys.id}

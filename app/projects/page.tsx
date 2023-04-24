@@ -19,23 +19,23 @@ export default async function Page() {
   return (
     <>
       <div>
-        <ul className=" mt-3  px-5 md:px-16 ">
+        <ul className=" mt-3  px-5 md:px-16 md:grid lg:grid-cols-3">
           {projects.items.map((item: any) => (
             <div
-              className="border-2 rounded-md pb-5 m-5 mt-10 md:grid lg:grid-cols-2"
+              className="border-2 rounded-lg pb-5 m-5 mt-10 "
               key={item.sys.id}
             >
               <div>
                 <div className="p-5 ">
-                  <h2 className="text-2xl md:text-5xl font-bold text-gray-800 hover:text-orange-500    mt-2">
+                  <h2 className="text-2xl md:text-4xl font-bold text-gray-800 hover:text-orange-500 mt-2 lg:h-48">
                     {item.fields.projectName}
                   </h2>
-                  <h3 className="text-2xl md:text-3xl text-gray-400 font-serif mt-3">
+                  <h3 className="text-2xl md:text-3xl text-gray-400 font-serif mt-3 ">
                     {item.fields.projectTitle}
                   </h3>
                 </div>
-                <div className=" md:grid grid-cols-2">
-                  <div className="mt-3">
+                <div className=" md:grid xl:grid-cols-2">
+                  <div className="mt-3 ">
                     <Button text={"Visit Site"} link={item.fields.siteLink} />
                   </div>
                   <div className="mt-3">
@@ -46,20 +46,19 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-
               {projects.includes.Asset.map((elem: any) => (
                 <div key={elem.sys.space.sys.id}>
                   {item.fields.projectImage.sys.id == elem.sys.id ? (
                     <Image
                       src={"https:" + elem.fields.file.url}
-                      width={1000}
-                      height={500}
+                      width={500}
+                      height={400}
                       alt="project"
-                      className="rounded-md  hover:scale-105 delay-100"
+                      className="  hover:scale-105 delay-100 "
                     />
-                  ) : 
+                  ) : (
                     <div></div>
-                  }
+                  )}
                 </div>
               ))}
             </div>

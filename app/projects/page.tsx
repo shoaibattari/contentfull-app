@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Button from "../components/Button";
-import pana from "../../public/panaverse tailwind.webp";
 
-const getBlog = async () => {
+const getproject = async () => {
   const res = await fetch(
     `https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries?access_token=${process.env.CONTENTFUL_ACCESS_KEY}&content_type=resumeProject`,
     { cache: "no-store" }
@@ -16,16 +15,12 @@ const getBlog = async () => {
 };
 
 export default async function Page() {
-  const blog = await getBlog();
+  const projects = await getproject();
   return (
     <>
-      {/* <h1 className="text-5xl font-bold text-center mt-5">
-        Well come to Blog page
-      </h1> */}
-
       <div>
         <ul className=" mt-3  px-5 md:px-16 ">
-          {blog.items.map((item: any) => (
+          {projects.items.map((item: any) => (
             <div
               className="border-2 rounded-md pb-5 m-5 mt-10 md:grid lg:grid-cols-2"
               key={item.sys.id}
@@ -51,16 +46,22 @@ export default async function Page() {
                   </div>
                 </div>
               </div>
-              <div>
-                <Image
-                  src={pana}
-                  width={1000}
-                  height={500}
-                  alt="pana"
-                  // alt={ele.Alt}
-                  className="rounded-md  hover:scale-105 delay-100"
-                />
-              </div>
+
+              {projects.includes.Asset.map((elem: any) => (
+                <div key={elem.sys.space.sys.id}>
+                  {item.fields.projectImage.sys.id == elem.sys.id ? (
+                    <Image
+                      src={"https:" + elem.fields.file.url}
+                      width={1000}
+                      height={500}
+                      alt="project"
+                      className="rounded-md  hover:scale-105 delay-100"
+                    />
+                  ) : 
+                    <div></div>
+                  }
+                </div>
+              ))}
             </div>
           ))}
         </ul>

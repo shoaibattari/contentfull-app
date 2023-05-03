@@ -19,7 +19,7 @@ export default async function Page() {
   return (
     <>
       <div>
-        <ul className=" mt-3  px-5 md:px-16 md:grid lg:grid-cols-3">
+        <ul className=" mt-3  px-5 md:px-16 md:grid lg:grid-cols-2">
           {projects.items.map((item: any) => (
             <div
               className="border-2 rounded-lg pb-5 m-5 mt-10 "
@@ -27,7 +27,7 @@ export default async function Page() {
             >
               <div>
                 <div className="p-5 ">
-                  <h2 className="text-2xl md:text-4xl font-bold text-gray-800 hover:text-orange-500 mt-2 lg:h-48">
+                  <h2 className="text-2xl md:text-4xl font-bold text-gray-800 hover:text-orange-500 mt-2 lg:h-24">
                     {item.fields.projectName}
                   </h2>
                   <h3 className="text-2xl md:text-3xl text-gray-400 font-serif mt-3 ">
@@ -51,7 +51,7 @@ export default async function Page() {
                   {item.fields.projectImage.sys.id == elem.sys.id ? (
                     <Image
                       src={"https:" + elem.fields.file.url}
-                      width={500}
+                      width={700}
                       height={400}
                       alt="project"
                       className="  hover:scale-105 delay-100 "
